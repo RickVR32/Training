@@ -37,6 +37,9 @@ header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;backgrou
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
 .logo{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;font-family:var(--sans);font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
 .logo em{font-style:normal;color:var(--green)}
+.lk{display:flex;flex-direction:column;line-height:1.05}
+.lk small{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--body);margin-top:3px}
+.fgrid .lk small{color:#9AA69E}
 .mark{width:34px;height:34px;border-radius:9px;background:#00874A;position:relative;flex:none}
 .mark::before,.mark::after{content:"";position:absolute;background:#fff;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:1px}
 .mark::before{width:19px;height:6px}.mark::after{width:6px;height:19px}
@@ -251,7 +254,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   .wrap{padding:0 20px}
   header.site .wrap{height:64px}
   .hero{min-height:86vh}.hero-inner{padding-top:100px;padding-bottom:48px}
-  .logo{font-size:1.02rem}.logo .t{display:none}
+  .logo{font-size:1.02rem}
   nav a.cta{padding:9px 16px}
   .hero .ph-tag{right:20px;left:20px;bottom:auto;top:20px;justify-content:center}
   .phero .ph-tag{right:20px;left:20px;top:20px;bottom:auto}
@@ -275,7 +278,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span>Life<em>Ready</em><span class="t"> Training</span></span></a>
+    <a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span class="lk"><span>Life<em>Ready</em></span><small>First aid training</small></span></a>
     <nav aria-label="Main">
       <a href="#courses">Courses</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin" class="admin">Admin preview</a>
       <a href="#book" class="cta">Book a course</a>
@@ -290,7 +293,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- HOME -->
 <section class="page" id="p-home">
   <div class="hero">
-    <div class="ph" role="img" aria-label="Hero photo placeholder"><span class="ph-tag">📷 Hero photo: Donna guiding a parent through infant CPR, warm natural light, faces visible</span></div>
+    <div class="ph" role="img" aria-label="Hero photo placeholder"><span class="ph-tag">📷 Hero photo: instructor's hands guiding a parent through infant CPR, warm natural light</span></div>
     <div class="wrap hero-inner">
       <a class="next" href="#book" data-book="1"><b>Next class</b>Baby and Child First Aid, Sat 17 Oct</a>
       <h1>Would you know <i>what to do?</i></h1>
@@ -333,11 +336,11 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   </div></section>
 
   <section class="band soft"><div class="wrap split">
-    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Portrait of Donna, relaxed, looking at camera</span></div>
+    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Photo: close-up of hands practising CPR on a manikin</span></div>
     <div>
       <p class="eyebrow">Why people train with Donna</p>
       <blockquote>"When something goes wrong, the people who act are the ones who've practised. I make sure you leave ready."</blockquote>
-      <div class="sig"><span class="av ph" aria-hidden="true"></span><span><strong>Donna</strong>Founder and instructor</span></div>
+      <div class="sig"><span class="mark av" aria-hidden="true" style="border-radius:50%"></span><span><strong>Donna</strong>Founder and instructor</span></div>
       <ul class="points">
         <li>Three decades in childcare, so she knows the real situations you'll face</li>
         <li>Small groups with plenty of hands-on practice</li>
@@ -434,7 +437,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- WORKPLACE -->
 <section class="page" id="p-workplace">
   <div class="phero">
-    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Donna delivering on-site training to a workplace team</span></div>
+    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Photo: workplace team practising with a defibrillator</span></div>
     <div class="wrap inner"><h1>Workplace training</h1><p>Accredited courses for your team, delivered at your site or ours, with a quote tailored to you.</p></div>
   </div>
   <div class="wrap page-body">
@@ -474,13 +477,13 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- ABOUT -->
 <section class="page" id="p-about"><div class="wrap page-body">
   <div class="about-grid">
-    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Portrait of Donna, head and shoulders</span></div>
+    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Photo: first aid kit and manikins laid out, overhead shot</span></div>
     <div>
       <p class="eyebrow">About</p>
       <h1 style="font-size:clamp(2.6rem,5vw,4rem)">Hi, I'm Donna</h1>
       <p class="lead">I spent 30 years in childcare before becoming a first aid instructor. In that time I learned that confidence matters as much as technique.</p>
       <p style="color:var(--body)">My courses are relaxed and hands-on, whether you're a nursery team that needs certificates or a new parent who just wants to know what to do. Everyone leaves knowing they could step in.</p>
-      <p style="color:var(--body)">[Placeholder: Donna to review and add her own words, qualifications and awarding body.]</p>
+      <p style="color:var(--body)">[Placeholder: Donna to review wording and add qualifications and awarding body.]</p>
       <a class="btn primary" href="#book" style="margin-top:12px">Book a course</a>
     </div>
   </div>
@@ -520,7 +523,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 
 <footer class="site"><div class="wrap">
   <div class="fgrid">
-    <div><a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span>Life<em>Ready</em> Training</span></a>
+    <div><a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span class="lk"><span>Life<em>Ready</em></span><small>First aid training</small></span></a>
       <p>Practical first aid training based in Orpington, covering Kent and South East London.</p></div>
     <div><h4>Training</h4><a href="#courses">All courses</a><a href="#workplace">Workplace</a><a href="#book">Book a class</a></div>
     <div><h4>Contact</h4><a href="#workplace">Get a quote</a><a href="#about">About Donna</a><span>Phone to follow</span></div>

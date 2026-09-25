@@ -40,6 +40,8 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .lk{display:flex;flex-direction:column;line-height:1.05}
 .lk small{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--body);margin-top:3px}
 .fgrid .lk small{color:#9AA69E}
+.lk small{white-space:nowrap}
+@media (max-width:420px){.lk small{font-size:.54rem;letter-spacing:.08em}.theme{width:38px;height:38px}header.site .wrap{gap:10px}}
 .mark{width:34px;height:34px;border-radius:9px;background:#00874A;position:relative;flex:none}
 .mark::before,.mark::after{content:"";position:absolute;background:#fff;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:1px}
 .mark::before{width:19px;height:6px}.mark::after{width:6px;height:19px}
@@ -77,6 +79,11 @@ nav a.admin{border:1px solid var(--line)}
 .ph.light::before{background-image:linear-gradient(rgba(0,0,0,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.25) 1px,transparent 1px)}
 .ph-tag{position:absolute;left:16px;bottom:16px;z-index:2;display:flex;align-items:center;gap:8px;font:500 .8rem/1.3 var(--sans);
   background:rgba(0,0,0,.45);color:#fff;padding:8px 12px;border-radius:999px;backdrop-filter:blur(6px);max-width:calc(100% - 32px)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ph.has-img{background:#0B1F15}
+.ph.has-img::before{display:none}
+.hero .ph.has-img::after{background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.1) 60%),linear-gradient(180deg,rgba(0,0,0,.1) 40%,rgba(0,0,0,.55))}
+.phero .ph::after,.hero .ph::after,.cta-band .ph::after{z-index:1}
 .ph.light .ph-tag{background:rgba(255,255,255,.75);color:#1F3A2A}
 .ph-tag svg{flex:none}
 
@@ -277,7 +284,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 </style>
 </head>
 <body>
-<div class="preview" role="note">Preview: name, prices, dates, venue and photos are placeholders. Payments are switched off.</div>
+<div class="preview" role="note">Preview: name, prices, dates and venue are placeholders. Payments are switched off.</div>
 
 <header class="site">
   <div class="wrap">
@@ -297,7 +304,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- HOME -->
 <section class="page" id="p-home">
   <div class="hero">
-    <div class="ph" role="img" aria-label="Hero photo placeholder"><span class="ph-tag">📷 Image 1: Hero, infant CPR practice</span></div>
+    <div class="ph has-img"><img src="images/hero.jpg" alt="First aid instructor coaching a learner through CPR on a training manikin" loading="eager" style="object-position:70% center"></div>
     <div class="wrap hero-inner">
       <a class="next" href="#book" data-book="1"><b>Next class</b>Baby and Child First Aid, Sat 17 Oct</a>
       <h1>Would you know <i>what to do?</i></h1>
@@ -319,19 +326,19 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
     <p class="lead">Whether you're responsible for a team, a room of toddlers or your own family, every course is practical, relaxed and built on real situations.</p>
     <div class="streams">
       <article class="stream">
-        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 2: Workplace team CPR</span></div>
+        <div class="ph has-img"><img src="images/workplace-card.jpg" alt="Workplace team watching a defibrillator demonstration" loading="lazy" style="object-position:center"></div>
         <div class="body"><h3>Workplace</h3><p>Accredited courses delivered at your site or ours, priced for your team.</p>
           <ul><li>Emergency First Aid at Work</li><li>First Aid at Work</li><li>CPR and AED</li></ul>
           <a class="btn primary small" href="#workplace">Get a quote</a></div>
       </article>
       <article class="stream">
-        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 3: Childcare staff training</span></div>
+        <div class="ph has-img"><img src="images/paediatric-card.jpg" alt="Childcare professionals practising on infant manikins" loading="lazy" style="object-position:center"></div>
         <div class="body"><h3>Paediatric</h3><p>Certificated training for childminders, nurseries and childcare professionals.</p>
           <ul><li>Paediatric First Aid</li><li>Nursery and setting bookings</li><li>Refresher training</li></ul>
           <a class="btn primary small" href="#courses" data-filter="paediatric">See courses</a></div>
       </article>
       <article class="stream">
-        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 4: Relaxed community class</span></div>
+        <div class="ph has-img"><img src="images/community-card.jpg" alt="Learner practising applying an arm sling" loading="lazy" style="object-position:center"></div>
         <div class="body"><h3>Community</h3><p>No exams, no pressure. Just the skills to act when it matters most.</p>
           <ul><li>Baby and Child First Aid</li><li>First Aid for Everyone</li><li>Sports and community groups</li></ul>
           <a class="btn primary small" href="#courses" data-filter="community">See courses</a></div>
@@ -340,7 +347,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   </div></section>
 
   <section class="band soft"><div class="wrap split">
-    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Image 5: Hands-on CPR close-up</span></div>
+    <div class="ph has-img"><img src="images/split.jpg" alt="First aid kit, training defibrillator and infant manikin laid out on a table" loading="lazy" style="object-position:center"></div>
     <div>
       <p class="eyebrow">Why people train with us</p>
       <blockquote>"When something goes wrong, the people who act are the ones who've practised. We make sure you leave ready."</blockquote>
@@ -369,7 +376,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 
   <div style="padding-top:28px"></div>
   <section class="cta-band">
-    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 6: Group practising together</span></div>
+    <div class="ph has-img"><img src="images/cta.jpg" alt="Small group practising CPR with an instructor" loading="lazy" style="object-position:75% center"></div>
     <div class="inner">
       <h2>Train your team with confidence</h2>
       <p>Tell us about your workplace and get a tailored quote, usually within one working day.</p>
@@ -381,7 +388,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- COURSES -->
 <section class="page" id="p-courses">
   <div class="phero">
-    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Image 7: Courses banner, manikins in a row</span></div>
+    <div class="ph has-img"><img src="images/courses-banner.jpg" alt="Adult, child and infant training manikins laid out in a training room" loading="lazy" style="object-position:center"></div>
     <div class="wrap inner"><h1>Courses</h1><p>Open classes you can book online, and workplace courses delivered at your site or ours.</p></div>
   </div>
   <div class="wrap page-body">
@@ -441,7 +448,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- WORKPLACE -->
 <section class="page" id="p-workplace">
   <div class="phero">
-    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Image 8: Workplace defibrillator training</span></div>
+    <div class="ph has-img"><img src="images/workplace-banner.jpg" alt="Colleagues practising chest compressions on manikins" loading="lazy" style="object-position:center 40%"></div>
     <div class="wrap inner"><h1>Workplace training</h1><p>Accredited courses for your team, delivered at your site or ours, with a quote tailored to you.</p></div>
   </div>
   <div class="wrap page-body">
@@ -481,7 +488,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- ABOUT -->
 <section class="page" id="p-about"><div class="wrap page-body">
   <div class="about-grid">
-    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Image 9: Kit and manikins, overhead</span></div>
+    <div class="ph has-img"><img src="images/about.jpg" alt="Instructor supporting a learner during CPR practice" loading="lazy" style="object-position:center"></div>
     <div>
       <p class="eyebrow">About</p>
       <h1 style="font-size:clamp(2.6rem,5vw,4rem)">Training from people who've been there</h1>
@@ -492,9 +499,9 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
     </div>
   </div>
   <div class="gallery">
-    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 10: Bandaging practice</span></div>
-    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 11: Defibrillator trainer detail</span></div>
-    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 12: Certificates on the table</span></div>
+    <div class="ph light has-img"><img src="images/gallery-aed.jpg" alt="Training defibrillator and pads" loading="lazy" style="object-position:center"></div>
+    <div class="ph has-img"><img src="images/gallery-certificates.jpg" alt="Blank certificates and a first aid bag" loading="lazy" style="object-position:center"></div>
+    <div class="ph light has-img"><img src="images/gallery-cpr.jpg" alt="Learner practising chest compressions" loading="lazy" style="object-position:center"></div>
   </div>
 </div></section>
 

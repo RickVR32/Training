@@ -50,6 +50,9 @@ nav a[aria-current="page"]{color:var(--text);background:var(--soft)}
 nav a.cta{background:var(--green);color:var(--on-green);margin-left:8px;padding:10px 20px}
 nav a.cta:hover{background:var(--green-hover)}
 nav a.admin{border:1px solid var(--line)}
+.theme{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);display:grid;place-items:center;cursor:pointer;margin-left:6px;flex:none}
+.theme:hover{border-color:var(--text)}
+.theme svg{width:19px;height:19px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:15px 28px;font-weight:600;font-size:1rem;cursor:pointer;text-decoration:none;min-height:48px;transition:background .2s,transform .2s}
 .btn.primary{background:var(--green);color:var(--on-green)}
@@ -274,13 +277,14 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 </style>
 </head>
 <body>
-<div class="preview" role="note">Preview for Donna: name, prices, dates, venue and photos are placeholders. Payments are switched off.</div>
+<div class="preview" role="note">Preview: name, prices, dates, venue and photos are placeholders. Payments are switched off.</div>
 
 <header class="site">
   <div class="wrap">
     <a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span class="lk"><span>Life<em>Ready</em></span><small>First aid training</small></span></a>
     <nav aria-label="Main">
       <a href="#courses">Courses</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin" class="admin">Admin preview</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch to dark mode"></button>
       <a href="#book" class="cta">Book a course</a>
     </nav>
   </div>
@@ -293,7 +297,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- HOME -->
 <section class="page" id="p-home">
   <div class="hero">
-    <div class="ph" role="img" aria-label="Hero photo placeholder"><span class="ph-tag">📷 Hero photo: instructor's hands guiding a parent through infant CPR, warm natural light</span></div>
+    <div class="ph" role="img" aria-label="Hero photo placeholder"><span class="ph-tag">📷 Image 1: Hero, infant CPR practice</span></div>
     <div class="wrap hero-inner">
       <a class="next" href="#book" data-book="1"><b>Next class</b>Baby and Child First Aid, Sat 17 Oct</a>
       <h1>Would you know <i>what to do?</i></h1>
@@ -315,19 +319,19 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
     <p class="lead">Whether you're responsible for a team, a room of toddlers or your own family, every course is practical, relaxed and built on real situations.</p>
     <div class="streams">
       <article class="stream">
-        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Office team practising CPR on manikins</span></div>
+        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 2: Workplace team CPR</span></div>
         <div class="body"><h3>Workplace</h3><p>Accredited courses delivered at your site or ours, priced for your team.</p>
           <ul><li>Emergency First Aid at Work</li><li>First Aid at Work</li><li>CPR and AED</li></ul>
           <a class="btn primary small" href="#workplace">Get a quote</a></div>
       </article>
       <article class="stream">
-        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Nursery staff with infant manikins</span></div>
+        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 3: Childcare staff training</span></div>
         <div class="body"><h3>Paediatric</h3><p>Certificated training for childminders, nurseries and childcare professionals.</p>
           <ul><li>Paediatric First Aid</li><li>Nursery and setting bookings</li><li>Refresher training</li></ul>
           <a class="btn primary small" href="#courses" data-filter="paediatric">See courses</a></div>
       </article>
       <article class="stream">
-        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Parents and grandparents in a relaxed class</span></div>
+        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 4: Relaxed community class</span></div>
         <div class="body"><h3>Community</h3><p>No exams, no pressure. Just the skills to act when it matters most.</p>
           <ul><li>Baby and Child First Aid</li><li>First Aid for Everyone</li><li>Sports and community groups</li></ul>
           <a class="btn primary small" href="#courses" data-filter="community">See courses</a></div>
@@ -336,13 +340,13 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   </div></section>
 
   <section class="band soft"><div class="wrap split">
-    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Photo: close-up of hands practising CPR on a manikin</span></div>
+    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Image 5: Hands-on CPR close-up</span></div>
     <div>
-      <p class="eyebrow">Why people train with Donna</p>
-      <blockquote>"When something goes wrong, the people who act are the ones who've practised. I make sure you leave ready."</blockquote>
-      <div class="sig"><span class="mark av" aria-hidden="true" style="border-radius:50%"></span><span><strong>Donna</strong>Founder and instructor</span></div>
+      <p class="eyebrow">Why people train with us</p>
+      <blockquote>"When something goes wrong, the people who act are the ones who've practised. We make sure you leave ready."</blockquote>
+      <div class="sig"><span class="mark av" aria-hidden="true" style="border-radius:50%"></span><span><strong>LifeReady</strong>First aid training</span></div>
       <ul class="points">
-        <li>Three decades in childcare, so she knows the real situations you'll face</li>
+        <li>Three decades of childcare experience behind every course</li>
         <li>Small groups with plenty of hands-on practice</li>
         <li>Friendly, never intimidating, whatever your experience</li>
       </ul>
@@ -365,7 +369,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 
   <div style="padding-top:28px"></div>
   <section class="cta-band">
-    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Wide class shot, group practising together</span></div>
+    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 6: Group practising together</span></div>
     <div class="inner">
       <h2>Train your team with confidence</h2>
       <p>Tell us about your workplace and get a tailored quote, usually within one working day.</p>
@@ -377,7 +381,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- COURSES -->
 <section class="page" id="p-courses">
   <div class="phero">
-    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Close-up of hands on a manikin during CPR</span></div>
+    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Image 7: Courses banner, manikins in a row</span></div>
     <div class="wrap inner"><h1>Courses</h1><p>Open classes you can book online, and workplace courses delivered at your site or ours.</p></div>
   </div>
   <div class="wrap page-body">
@@ -437,7 +441,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- WORKPLACE -->
 <section class="page" id="p-workplace">
   <div class="phero">
-    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Photo: workplace team practising with a defibrillator</span></div>
+    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Image 8: Workplace defibrillator training</span></div>
     <div class="wrap inner"><h1>Workplace training</h1><p>Accredited courses for your team, delivered at your site or ours, with a quote tailored to you.</p></div>
   </div>
   <div class="wrap page-body">
@@ -468,7 +472,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   <div id="enq-done" hidden class="panel done">
     <div class="tick" aria-hidden="true">✓</div>
     <h2>Enquiry sent</h2>
-    <p class="lead" style="margin:16px auto 28px">Thanks. Donna will send your quote by email, usually within one working day.</p>
+    <p class="lead" style="margin:16px auto 28px">Thanks. We'll send your quote by email, usually within one working day.</p>
     <a class="btn outline" href="#home">Back to home</a>
   </div>
   </div>
@@ -477,26 +481,26 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 <!-- ABOUT -->
 <section class="page" id="p-about"><div class="wrap page-body">
   <div class="about-grid">
-    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Photo: first aid kit and manikins laid out, overhead shot</span></div>
+    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Image 9: Kit and manikins, overhead</span></div>
     <div>
       <p class="eyebrow">About</p>
-      <h1 style="font-size:clamp(2.6rem,5vw,4rem)">Hi, I'm Donna</h1>
-      <p class="lead">I spent 30 years in childcare before becoming a first aid instructor. In that time I learned that confidence matters as much as technique.</p>
-      <p style="color:var(--body)">My courses are relaxed and hands-on, whether you're a nursery team that needs certificates or a new parent who just wants to know what to do. Everyone leaves knowing they could step in.</p>
-      <p style="color:var(--body)">[Placeholder: Donna to review wording and add qualifications and awarding body.]</p>
+      <h1 style="font-size:clamp(2.6rem,5vw,4rem)">Training from people who've been there</h1>
+      <p class="lead">Our training is built on 30 years of childcare experience, and one lesson from all of it: confidence matters as much as technique.</p>
+      <p style="color:var(--body)">Our courses are relaxed and hands-on, whether you're a nursery team that needs certificates or a new parent who just wants to know what to do. Everyone leaves knowing they could step in.</p>
+      <p style="color:var(--body)">[Placeholder: add qualifications and awarding body.]</p>
       <a class="btn primary" href="#book" style="margin-top:12px">Book a course</a>
     </div>
   </div>
   <div class="gallery">
-    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Class in action</span></div>
-    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Kit and manikins</span></div>
-    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Certificate day</span></div>
+    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 10: Bandaging practice</span></div>
+    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 11: Defibrillator trainer detail</span></div>
+    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Image 12: Certificates on the table</span></div>
   </div>
 </div></section>
 
 <!-- ADMIN -->
 <section class="page" id="p-admin">
-  <div class="admin-bar"><div class="wrap"><h1>Good morning, Donna</h1><span style="color:var(--body)">Admin preview with sample data</span></div></div>
+  <div class="admin-bar"><div class="wrap"><h1>Good morning</h1><span style="color:var(--body)">Admin preview with sample data</span></div></div>
   <div class="wrap" style="padding-bottom:64px">
     <div class="metrics">
       <div class="metric"><span>Revenue this month</span><strong>£1,480</strong></div>
@@ -526,7 +530,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
     <div><a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span class="lk"><span>Life<em>Ready</em></span><small>First aid training</small></span></a>
       <p>Practical first aid training based in Orpington, covering Kent and South East London.</p></div>
     <div><h4>Training</h4><a href="#courses">All courses</a><a href="#workplace">Workplace</a><a href="#book">Book a class</a></div>
-    <div><h4>Contact</h4><a href="#workplace">Get a quote</a><a href="#about">About Donna</a><span>Phone to follow</span></div>
+    <div><h4>Contact</h4><a href="#workplace">Get a quote</a><a href="#about">About us</a><span>Phone to follow</span></div>
   </div>
   <div class="fbot"><span>LifeReady Training. Business name to be confirmed.</span><span>Site by <a href="https://ric-lee.co.uk">Ric</a></span></div>
 </div></footer>
@@ -638,6 +642,18 @@ const rows=[...SESSIONS.map(s=>({d:s.d,name:byId(s.c).name,type:"Open class",n:s
 $("#admin-sessions").innerHTML=rows.map(r=>`<tr><td>${fmtDate(r.d)}</td><td>${esc(r.name)}</td><td>${r.type}</td><td>${r.n} / ${r.cap}</td><td><div class="fill"><i style="width:${Math.round(r.n/r.cap*100)}%"></i></div></td></tr>`).join("");
 
 renderPick();update();route();
+
+(function(){
+  const root=document.documentElement,btn=document.getElementById("theme"),mq=matchMedia("(prefers-color-scheme: dark)");
+  const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  const moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>';
+  let saved=null;try{saved=localStorage.getItem("lr-theme")}catch(e){}
+  const current=()=>root.dataset.theme||(mq.matches?"dark":"light");
+  const paint=()=>{const d=current()==="dark";btn.innerHTML=d?sun:moon;btn.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode")};
+  if(saved==="dark"||saved==="light")root.dataset.theme=saved;
+  paint();mq.addEventListener("change",paint);
+  btn.addEventListener("click",()=>{const next=current()==="dark"?"light":"dark";root.dataset.theme=next;try{localStorage.setItem("lr-theme",next)}catch(e){}paint()});
+})();
 </script>
 </body>
 </html>

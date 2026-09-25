@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LifeReady Training | Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#00874A;--green-hover:#006E3C;--green-deep:#06331F;--tint:#EEF5F0;--black:#141414;--text:#141414;--body:#51584F;
+  --line:#E3E8E4;--bg:#FBFBF8;--card:#FFFFFF;--soft:#F3F5F1;--on-green:#FFFFFF;--err:#B3261E;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --green:#35BD78;--green-hover:#52CF8E;--green-deep:#06331F;--tint:#14231A;--black:#0C0C0C;--text:#EEEEEA;--body:#AEB7B0;
+  --line:#26302A;--bg:#101211;--card:#161917;--soft:#131614;--on-green:#06130C;--err:#FF8A80}}
+:root[data-theme="dark"]{
+  --green:#35BD78;--green-hover:#52CF8E;--green-deep:#06331F;--tint:#14231A;--black:#0C0C0C;--text:#EEEEEA;--body:#AEB7B0;
+  --line:#26302A;--bg:#101211;--card:#161917;--soft:#131614;--on-green:#06130C;--err:#FF8A80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.015em}
+a{color:var(--green)}
+button,input,select,textarea{font:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.page{display:none}.page.on{display:block}
+
+.preview{background:var(--black);color:#BFC7C1;font-size:.82rem;text-align:center;padding:7px 16px;letter-spacing:.01em}
+
+/* header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+.logo{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;font-family:var(--sans);font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
+.logo em{font-style:normal;color:var(--green)}
+.mark{width:34px;height:34px;border-radius:9px;background:#00874A;position:relative;flex:none}
+.mark::before,.mark::after{content:"";position:absolute;background:#fff;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:1px}
+.mark::before{width:19px;height:6px}.mark::after{width:6px;height:19px}
+nav{display:flex;align-items:center;gap:2px}
+nav a{color:var(--body);text-decoration:none;padding:8px 14px;border-radius:999px;font-size:.95rem;font-weight:500;white-space:nowrap}
+nav a:hover{color:var(--text)}
+nav a[aria-current="page"]{color:var(--text);background:var(--soft)}
+nav a.cta{background:var(--green);color:var(--on-green);margin-left:8px;padding:10px 20px}
+nav a.cta:hover{background:var(--green-hover)}
+nav a.admin{border:1px solid var(--line)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:15px 28px;font-weight:600;font-size:1rem;cursor:pointer;text-decoration:none;min-height:48px;transition:background .2s,transform .2s}
+.btn.primary{background:var(--green);color:var(--on-green)}
+.btn.primary:hover{background:var(--green-hover)}
+.btn.light{background:#fff;color:#141414}
+.btn.light:hover{background:#E9EFEA}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.btn.outline{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1.5px var(--text)}
+.btn.small{padding:10px 18px;min-height:40px;font-size:.93rem}
+
+/* photo placeholders */
+.ph{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 80% 10%,rgba(53,189,120,.35),transparent 60%),
+  radial-gradient(90% 80% at 10% 100%,rgba(0,0,0,.45),transparent 60%),
+  linear-gradient(135deg,#0B4A2D,#06331F 55%,#0A0F0C);
+  color:rgba(255,255,255,.9)}
+.ph::before{content:"";position:absolute;inset:0;opacity:.14;background-image:
+  linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+.ph.light{background:linear-gradient(135deg,#DDEBE1,#C7DCCD);color:#1F3A2A}
+.ph.light::before{background-image:linear-gradient(rgba(0,0,0,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.25) 1px,transparent 1px)}
+.ph-tag{position:absolute;left:16px;bottom:16px;z-index:2;display:flex;align-items:center;gap:8px;font:500 .8rem/1.3 var(--sans);
+  background:rgba(0,0,0,.45);color:#fff;padding:8px 12px;border-radius:999px;backdrop-filter:blur(6px);max-width:calc(100% - 32px)}
+.ph.light .ph-tag{background:rgba(255,255,255,.75);color:#1F3A2A}
+.ph-tag svg{flex:none}
+
+/* hero */
+.hero{position:relative;min-height:min(88vh,820px);display:flex;align-items:flex-end}
+.hero .ph{position:absolute;inset:0}
+.hero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.6))}
+.hero .ph-tag{left:auto;right:28px;bottom:28px;top:auto}
+.hero-inner{position:relative;z-index:3;padding-top:120px;padding-bottom:72px;color:#fff;width:100%}
+.next{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);padding:7px 16px 7px 8px;border-radius:999px;font-size:.9rem;margin-bottom:28px;color:#fff;text-decoration:none}
+.next b{white-space:nowrap;background:#00874A;border-radius:999px;padding:3px 10px;font-weight:600;font-size:.8rem}
+.hero h1{font-size:clamp(3rem,8.4vw,7rem);max-width:11ch;font-weight:500}
+.hero h1 i{font-style:italic;color:#8FE3B4}
+.hero .sub{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:44ch;margin:26px 0 34px;color:rgba(255,255,255,.86)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+/* trust strip */
+.trust{border-bottom:1px solid var(--line);background:var(--card)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust div{padding:30px 24px 30px 0}
+.trust div+div{border-left:1px solid var(--line);padding-left:24px}
+.trust strong{display:block;font-family:var(--serif);font-weight:500;font-size:2rem;line-height:1.1}
+.trust span{color:var(--body);font-size:.92rem}
+
+section.band{padding:112px 0}
+.eyebrow{color:var(--green);font-weight:600;font-size:.95rem;margin:0 0 16px}
+.band h2{font-size:clamp(2.2rem,4.6vw,3.6rem);max-width:18ch}
+.lead{color:var(--body);font-size:1.12rem;max-width:56ch;margin:20px 0 0}
+
+/* streams */
+.streams{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.stream{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.stream:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,40,20,.35)}
+.stream .ph{aspect-ratio:4/3}
+.stream .body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+.stream h3{font-size:1.75rem}
+.stream p{color:var(--body);margin:10px 0 16px}
+.stream ul{list-style:none;margin:0 0 24px;padding:0;border-top:1px solid var(--line)}
+.stream li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.97rem}
+.stream .btn{margin-top:auto;align-self:flex-start}
+
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.split .ph{aspect-ratio:4/5;border-radius:26px}
+blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.2;letter-spacing:-.01em}
+.sig{margin-top:28px;display:flex;align-items:center;gap:14px;color:var(--body)}
+.sig .av{width:52px;height:52px;border-radius:50%;flex:none}
+.sig strong{display:block;color:var(--text)}
+.points{margin:36px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+.points li{display:flex;gap:14px;align-items:flex-start;color:var(--body)}
+.points li::before{content:"";flex:none;width:22px;height:22px;margin-top:3px;border-radius:50%;background:var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6.5 11.5l3 3 6-6.5' fill='none' stroke='%2300874A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+
+/* sessions */
+.soft{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.sessions{margin-top:48px;border-top:1px solid var(--line)}
+.srow{display:grid;grid-template-columns:130px 1fr auto;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.date{font-family:var(--serif);font-size:1.9rem;line-height:1}
+.date small{display:block;font-family:var(--sans);font-size:.85rem;color:var(--body);margin-top:6px}
+.srow strong{font-size:1.15rem;font-weight:600}
+.srow .meta{color:var(--body);font-size:.95rem}
+.left{font-size:.85rem;font-weight:600;color:var(--green);margin-top:4px}
+.left.low{color:var(--err)}
+
+/* testimonial */
+.quote-band{background:var(--black);color:#fff;padding:112px 0;text-align:center}
+.quote-band blockquote{max-width:24ch;margin:0 auto;color:#fff}
+.quote-band p{color:#9AA69E;margin-top:24px}
+.stars{color:#8FE3B4;letter-spacing:.2em;margin-bottom:26px}
+
+/* cta */
+.cta-band{margin:0 28px 28px;border-radius:30px;position:relative;overflow:hidden}
+.cta-band .ph{position:absolute;inset:0}
+.cta-band .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,51,31,.92),rgba(6,51,31,.45))}
+.cta-band .inner{position:relative;z-index:3;padding:96px 64px;color:#fff;max-width:680px}
+.cta-band h2{font-size:clamp(2.2rem,4.4vw,3.4rem)}
+.cta-band p{color:rgba(255,255,255,.82);margin:18px 0 32px;font-size:1.1rem}
+
+/* inner page hero */
+.phero{position:relative;min-height:380px;display:flex;align-items:flex-end}
+.phero .ph{position:absolute;inset:0}
+.phero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55))}
+.phero .ph-tag{left:auto;right:28px;bottom:24px}
+.phero .inner{position:relative;z-index:3;color:#fff;padding-top:80px;padding-bottom:52px;width:100%}
+.phero h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+.phero p{color:rgba(255,255,255,.85);max-width:52ch;margin:16px 0 0;font-size:1.1rem}
+.page-body{padding-top:64px;padding-bottom:96px}
+
+/* courses */
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:9px 18px;cursor:pointer;min-height:42px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.courses{display:grid;border-top:1px solid var(--line)}
+.course{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line)}
+.course strong{font-family:var(--serif);font-weight:500;font-size:1.6rem}
+.course p{margin:6px 0 0;color:var(--body)}
+.tag{display:inline-block;font:600 .78rem var(--sans);padding:3px 11px;border-radius:999px;background:var(--tint);color:var(--green);margin-left:12px;vertical-align:5px}
+.price{font-weight:600;text-align:right}.price small{display:block;font-weight:400;color:var(--body);font-size:.85rem}
+
+/* forms */
+.two{display:grid;grid-template-columns:1.45fr 1fr;gap:36px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:22px;padding:32px;background:var(--card)}
+.panel h3{font-size:1.45rem;margin-bottom:16px}
+.sticky{position:sticky;top:calc(96px + env(safe-area-inset-top,0px))}
+label{display:block;font-weight:600;font-size:.93rem;margin:16px 0 7px}
+input,select,textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);min-height:48px}
+input:focus,select:focus,textarea:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 22%,transparent)}
+textarea{min-height:100px;resize:vertical}
+.err{color:var(--err);font-size:.86rem;margin:5px 0 0}
+.err:empty{display:none}
+.pick{display:grid;gap:10px}
+.pick label{margin:0;font-weight:400;display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .2s}
+.pick input{width:auto;min-height:0;accent-color:var(--green)}
+.pick label:has(input:checked){border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green);background:var(--tint)}
+.stepper{display:flex;align-items:center;gap:14px}
+.stepper button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.3rem;cursor:pointer}
+.stepper output{font-family:var(--serif);font-size:1.7rem;min-width:2ch;text-align:center}
+.sum dl{margin:0}.sum div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.sum dt{color:var(--body)}.sum dd{margin:0;font-weight:600;text-align:right}
+.sum .total{border-bottom:0;padding-top:18px}.sum .total dd{font-family:var(--serif);font-size:1.9rem;font-weight:500}
+.note{font-size:.88rem;color:var(--body);margin-top:14px}
+.steps{list-style:none;counter-reset:s;margin:0;padding:0}
+.steps li{counter-increment:s;display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--body)}
+.steps li::before{content:counter(s);font-family:var(--serif);color:var(--green);font-size:1.3rem;line-height:1.2;min-width:1.2em}
+.done{text-align:center;padding:72px 28px}
+.done .tick{width:76px;height:76px;border-radius:50%;background:var(--green);color:var(--on-green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 24px}
+.done h2{font-size:2.6rem}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-grid .ph{aspect-ratio:4/5;border-radius:26px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:72px}
+.gallery .ph{aspect-ratio:1;border-radius:20px}
+
+/* admin */
+.admin-bar{background:var(--soft);border-bottom:1px solid var(--line);padding:22px 0}
+.admin-bar h1{font-size:2rem}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.metric span{display:block;color:var(--body);font-size:.88rem}
+.metric strong{font-family:var(--serif);font-weight:500;font-size:2.1rem}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);font-size:.95rem}
+th{color:var(--body);font-weight:600}
+.fill{height:6px;background:var(--line);border-radius:3px;overflow:hidden;min-width:90px}
+.fill i{display:block;height:100%;background:var(--green)}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.col{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:14px}
+.col h4{margin:0 0 12px;font-size:.95rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:.9rem}
+.card b{display:block}
+.admin-h{font-size:1.7rem;margin:40px 0 16px}
+
+footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:.95rem}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #2A2F2B}
+.fgrid .logo{color:#fff;margin-bottom:16px}
+.fgrid h4{color:#fff;font-weight:600;margin:0 0 14px}
+.fgrid a{display:block;color:#9AA69E;text-decoration:none;padding:4px 0}
+.fgrid a:hover{color:#fff}
+.fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:28px}
+.fbot a{color:#fff}
+
+@media (max-width:980px){
+  nav a:not(.cta){display:none}
+  .streams,.split,.about-grid,.two{grid-template-columns:1fr}
+  .split{gap:40px}.split .ph,.about-grid .ph{aspect-ratio:4/3}
+  .trust .wrap{grid-template-columns:repeat(2,1fr)}
+  .trust div:nth-child(3){border-left:0;padding-left:0}
+  .trust div:nth-child(n+3){border-top:1px solid var(--line)}
+  .metrics,.pipe{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}.fgrid>div:first-child{grid-column:1/-1}
+  .sticky{position:static}
+  section.band{padding:80px 0}
+  .mnav{display:flex!important}
+}
+@media (max-width:600px){
+  .wrap{padding:0 20px}
+  header.site .wrap{height:64px}
+  .hero{min-height:86vh}.hero-inner{padding-top:100px;padding-bottom:48px}
+  .logo{font-size:1.02rem}.logo .t{display:none}
+  nav a.cta{padding:9px 16px}
+  .hero .ph-tag{right:20px;left:20px;bottom:auto;top:20px;justify-content:center}
+  .phero .ph-tag{right:20px;left:20px;top:20px;bottom:auto}
+  .srow{grid-template-columns:1fr;gap:10px}
+  .course{grid-template-columns:1fr;gap:14px}.price{text-align:left}
+  .cta-band{margin:0 12px 12px}.cta-band .inner{padding:64px 28px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .panel{padding:22px}
+  .ctas .btn{flex:1 1 100%}
+  .page-body{padding-top:44px}
+}
+.mnav{display:none;gap:6px;overflow-x:auto;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--bg);scrollbar-width:none}
+.mnav a{white-space:nowrap;text-decoration:none;color:var(--body);padding:7px 14px;border-radius:999px;font-size:.9rem;border:1px solid var(--line)}
+.mnav a[aria-current="page"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+@media (prefers-reduced-motion:no-preference){.page.on{animation:fade .35s ease-out}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+@media (prefers-reduced-motion:reduce){.stream{transition:none}}
+</style>
+</head>
+<body>
+<div class="preview" role="note">Preview for Donna: name, prices, dates, venue and photos are placeholders. Payments are switched off.</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span>Life<em>Ready</em><span class="t"> Training</span></span></a>
+    <nav aria-label="Main">
+      <a href="#courses">Courses</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin" class="admin">Admin preview</a>
+      <a href="#book" class="cta">Book a course</a>
+    </nav>
+  </div>
+</header>
+<div class="mnav" aria-label="Sections">
+  <a href="#home">Home</a><a href="#courses">Courses</a><a href="#book">Book</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin">Admin preview</a>
+</div>
+
+<main>
+<!-- HOME -->
+<section class="page" id="p-home">
+  <div class="hero">
+    <div class="ph" role="img" aria-label="Hero photo placeholder"><span class="ph-tag">📷 Hero photo: Donna guiding a parent through infant CPR, warm natural light, faces visible</span></div>
+    <div class="wrap hero-inner">
+      <a class="next" href="#book" data-book="1"><b>Next class</b>Baby and Child First Aid, Sat 17 Oct</a>
+      <h1>Would you know <i>what to do?</i></h1>
+      <p class="sub">Calm, hands-on first aid training for workplaces, childcare professionals and families across Kent and South East London.</p>
+      <div class="ctas"><a class="btn light" href="#book">Book a course</a><a class="btn ghost" href="#workplace">Request workplace training</a></div>
+    </div>
+  </div>
+
+  <div class="trust"><div class="wrap">
+    <div><strong>30 years</strong><span>in childcare before teaching</span></div>
+    <div><strong>Max 10</strong><span>people per open class</span></div>
+    <div><strong>On the day</strong><span>certificates for accredited courses</span></div>
+    <div><strong>[Awarding body]</strong><span>accredited training centre</span></div>
+  </div></div>
+
+  <section class="band"><div class="wrap">
+    <p class="eyebrow">Three ways to train</p>
+    <h2>Training built around the people in your care</h2>
+    <p class="lead">Whether you're responsible for a team, a room of toddlers or your own family, every course is practical, relaxed and built on real situations.</p>
+    <div class="streams">
+      <article class="stream">
+        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Office team practising CPR on manikins</span></div>
+        <div class="body"><h3>Workplace</h3><p>Accredited courses delivered at your site or ours, priced for your team.</p>
+          <ul><li>Emergency First Aid at Work</li><li>First Aid at Work</li><li>CPR and AED</li></ul>
+          <a class="btn primary small" href="#workplace">Get a quote</a></div>
+      </article>
+      <article class="stream">
+        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Nursery staff with infant manikins</span></div>
+        <div class="body"><h3>Paediatric</h3><p>Certificated training for childminders, nurseries and childcare professionals.</p>
+          <ul><li>Paediatric First Aid</li><li>Nursery and setting bookings</li><li>Refresher training</li></ul>
+          <a class="btn primary small" href="#courses" data-filter="paediatric">See courses</a></div>
+      </article>
+      <article class="stream">
+        <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Parents and grandparents in a relaxed class</span></div>
+        <div class="body"><h3>Community</h3><p>No exams, no pressure. Just the skills to act when it matters most.</p>
+          <ul><li>Baby and Child First Aid</li><li>First Aid for Everyone</li><li>Sports and community groups</li></ul>
+          <a class="btn primary small" href="#courses" data-filter="community">See courses</a></div>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="band soft"><div class="wrap split">
+    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Portrait of Donna, relaxed, looking at camera</span></div>
+    <div>
+      <p class="eyebrow">Why people train with Donna</p>
+      <blockquote>"When something goes wrong, the people who act are the ones who've practised. I make sure you leave ready."</blockquote>
+      <div class="sig"><span class="av ph" aria-hidden="true"></span><span><strong>Donna</strong>Founder and instructor</span></div>
+      <ul class="points">
+        <li>Three decades in childcare, so she knows the real situations you'll face</li>
+        <li>Small groups with plenty of hands-on practice</li>
+        <li>Friendly, never intimidating, whatever your experience</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="head-row">
+      <div><p class="eyebrow">Open classes</p><h2>Upcoming dates</h2></div>
+      <a class="btn outline small" href="#courses">All courses</a>
+    </div>
+    <div class="sessions" id="home-sessions"></div>
+  </div></section>
+
+  <section class="quote-band"><div class="wrap">
+    <div class="stars" aria-label="5 stars">★★★★★</div>
+    <blockquote>"I'd been terrified of something happening to my little one. Now I actually know what to do."</blockquote>
+    <p>Placeholder review, to be replaced with a real one after the first classes</p>
+  </div></section>
+
+  <div style="padding-top:28px"></div>
+  <section class="cta-band">
+    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Wide class shot, group practising together</span></div>
+    <div class="inner">
+      <h2>Train your team with confidence</h2>
+      <p>Tell us about your workplace and get a tailored quote, usually within one working day.</p>
+      <div class="ctas"><a class="btn light" href="#workplace">Request a quote</a></div>
+    </div>
+  </section>
+</section>
+
+<!-- COURSES -->
+<section class="page" id="p-courses">
+  <div class="phero">
+    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Close-up of hands on a manikin during CPR</span></div>
+    <div class="wrap inner"><h1>Courses</h1><p>Open classes you can book online, and workplace courses delivered at your site or ours.</p></div>
+  </div>
+  <div class="wrap page-body">
+    <div class="filter" role="group" aria-label="Filter courses">
+      <button class="chip" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" data-cat="workplace" aria-pressed="false">Workplace</button>
+      <button class="chip" data-cat="paediatric" aria-pressed="false">Paediatric</button>
+      <button class="chip" data-cat="community" aria-pressed="false">Community</button>
+    </div>
+    <div class="courses" id="course-list"></div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="page" id="p-book"><div class="wrap page-body">
+  <div id="book-form">
+    <p class="eyebrow">Book a class</p>
+    <h1 style="font-size:clamp(2.4rem,5vw,3.6rem)">Reserve your place</h1>
+    <p class="lead" style="margin-bottom:40px">Choose a date, add who's coming and pay securely. Places are held for 15 minutes while you pay.</p>
+    <div class="two">
+      <div class="panel">
+        <h3>1. Choose a date</h3>
+        <div class="pick" id="session-pick"></div>
+        <p class="err" id="e-session"></p>
+        <h3 style="margin-top:32px">2. How many places?</h3>
+        <div class="stepper"><button type="button" id="minus" aria-label="Fewer places">−</button><output id="seats" aria-live="polite">1</output><button type="button" id="plus" aria-label="More places">+</button></div>
+        <h3 style="margin-top:32px">3. Who's coming?</h3>
+        <div id="attendees"></div>
+        <h3 style="margin-top:32px">4. Your details</h3>
+        <label for="b-name">Your name</label><input id="b-name" autocomplete="name">
+        <p class="err" id="e-name"></p>
+        <label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email" placeholder="name@example.com">
+        <p class="err" id="e-email"></p>
+        <label for="b-phone">Phone (optional)</label><input id="b-phone" type="tel" autocomplete="tel">
+      </div>
+      <div class="panel sum sticky">
+        <h3>Your booking</h3>
+        <dl>
+          <div><dt>Course</dt><dd id="s-course">Choose a date</dd></div>
+          <div><dt>Date</dt><dd id="s-date">–</dd></div>
+          <div><dt>Places</dt><dd id="s-seats">1</dd></div>
+          <div class="total"><dt>Total</dt><dd id="s-total">£0</dd></div>
+        </dl>
+        <button class="btn primary" id="pay" style="width:100%;margin-top:18px">Continue to payment</button>
+        <p class="note">In the live site this opens secure card checkout. Payments are off in this preview.</p>
+      </div>
+    </div>
+  </div>
+  <div id="book-done" hidden class="panel done">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h2>You're booked</h2>
+    <p id="done-text" class="lead" style="margin:16px auto 28px"></p>
+    <a class="btn outline" href="#home">Back to home</a>
+  </div>
+</div></section>
+
+<!-- WORKPLACE -->
+<section class="page" id="p-workplace">
+  <div class="phero">
+    <div class="ph" role="img" aria-label="Page header photo placeholder"><span class="ph-tag">📷 Donna delivering on-site training to a workplace team</span></div>
+    <div class="wrap inner"><h1>Workplace training</h1><p>Accredited courses for your team, delivered at your site or ours, with a quote tailored to you.</p></div>
+  </div>
+  <div class="wrap page-body">
+  <div id="enq-form">
+    <div class="two">
+      <div class="panel">
+        <h3>Request a quote</h3>
+        <label for="q-org">Organisation</label><input id="q-org"><p class="err" id="e-org"></p>
+        <label for="q-name">Your name</label><input id="q-name" autocomplete="name"><p class="err" id="e-qname"></p>
+        <label for="q-email">Email</label><input id="q-email" type="email" autocomplete="email" placeholder="name@company.co.uk"><p class="err" id="e-qemail"></p>
+        <label for="q-phone">Phone</label><input id="q-phone" type="tel" autocomplete="tel">
+        <label for="q-course">Course</label><select id="q-course"></select>
+        <label for="q-count">Number of people</label><input id="q-count" type="number" min="1" inputmode="numeric" placeholder="6"><p class="err" id="e-count"></p>
+        <label for="q-loc">Where</label><select id="q-loc"><option>At our workplace</option><option>At your venue</option><option>Not sure yet</option></select>
+        <label for="q-dates">Preferred dates</label><input id="q-dates" placeholder="Weekdays in November">
+        <label for="q-notes">Anything else</label><textarea id="q-notes"></textarea>
+        <button class="btn primary" id="send-enq" style="margin-top:22px">Request a quote</button>
+      </div>
+      <div class="panel sticky">
+        <h3>How it works</h3>
+        <ol class="steps">
+          <li>Send your enquiry</li><li>Receive a tailored quote</li><li>Pay a deposit to secure your date</li><li>Add your attendees</li><li>Balance invoiced before the course</li>
+        </ol>
+        <p class="note">Accredited courses include certificates for every attendee who passes.</p>
+      </div>
+    </div>
+  </div>
+  <div id="enq-done" hidden class="panel done">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h2>Enquiry sent</h2>
+    <p class="lead" style="margin:16px auto 28px">Thanks. Donna will send your quote by email, usually within one working day.</p>
+    <a class="btn outline" href="#home">Back to home</a>
+  </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="p-about"><div class="wrap page-body">
+  <div class="about-grid">
+    <div class="ph" role="img" aria-label="Portrait placeholder"><span class="ph-tag">📷 Portrait of Donna, head and shoulders</span></div>
+    <div>
+      <p class="eyebrow">About</p>
+      <h1 style="font-size:clamp(2.6rem,5vw,4rem)">Hi, I'm Donna</h1>
+      <p class="lead">I spent 30 years in childcare before becoming a first aid instructor. In that time I learned that confidence matters as much as technique.</p>
+      <p style="color:var(--body)">My courses are relaxed and hands-on, whether you're a nursery team that needs certificates or a new parent who just wants to know what to do. Everyone leaves knowing they could step in.</p>
+      <p style="color:var(--body)">[Placeholder: Donna to review and add her own words, qualifications and awarding body.]</p>
+      <a class="btn primary" href="#book" style="margin-top:12px">Book a course</a>
+    </div>
+  </div>
+  <div class="gallery">
+    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Class in action</span></div>
+    <div class="ph" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Kit and manikins</span></div>
+    <div class="ph light" role="img" aria-label="Photo placeholder"><span class="ph-tag">📷 Certificate day</span></div>
+  </div>
+</div></section>
+
+<!-- ADMIN -->
+<section class="page" id="p-admin">
+  <div class="admin-bar"><div class="wrap"><h1>Good morning, Donna</h1><span style="color:var(--body)">Admin preview with sample data</span></div></div>
+  <div class="wrap" style="padding-bottom:64px">
+    <div class="metrics">
+      <div class="metric"><span>Revenue this month</span><strong>£1,480</strong></div>
+      <div class="metric"><span>Seats booked</span><strong>23</strong></div>
+      <div class="metric"><span>Deposits outstanding</span><strong>£420</strong></div>
+      <div class="metric"><span>Enquiry conversion</span><strong>62%</strong></div>
+    </div>
+    <h2 class="admin-h">Upcoming sessions</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Date</th><th>Course</th><th>Type</th><th>Booked</th><th>Fill</th></tr></thead>
+      <tbody id="admin-sessions"></tbody>
+    </table></div>
+    <h2 class="admin-h">Workplace enquiries</h2>
+    <div class="pipe">
+      <div class="col"><h4>New</h4><div class="card"><b>Little Acorns Nursery</b>Paediatric, 6 people</div><div class="card"><b>Orpington FC Juniors</b>CPR and AED, 12 people</div></div>
+      <div class="col"><h4>Quoted</h4><div class="card"><b>Bromley Dental</b>EFAW, 8 people</div></div>
+      <div class="col"><h4>Deposit paid</h4><div class="card"><b>Kent Logistics Ltd</b>FAW, 5 people</div></div>
+      <div class="col"><h4>Completed</h4><div class="card"><b>Sunshine Childminders</b>Paediatric, 4 people</div></div>
+    </div>
+    <p class="note" style="margin-top:24px">The live admin also includes calendar sync, editable email templates, attendee export for certificates and cancellations with refunds.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span>Life<em>Ready</em> Training</span></a>
+      <p>Practical first aid training based in Orpington, covering Kent and South East London.</p></div>
+    <div><h4>Training</h4><a href="#courses">All courses</a><a href="#workplace">Workplace</a><a href="#book">Book a class</a></div>
+    <div><h4>Contact</h4><a href="#workplace">Get a quote</a><a href="#about">About Donna</a><span>Phone to follow</span></div>
+  </div>
+  <div class="fbot"><span>LifeReady Training. Business name to be confirmed.</span><span>Site by <a href="https://ric-lee.co.uk">Ric</a></span></div>
+</div></footer>
+<script>
+const COURSES=[
+ {id:"efaw",name:"Emergency First Aid at Work",cat:"workplace",hrs:6,price:95,acc:true,online:false,sum:"One-day course for appointed workplace first aiders."},
+ {id:"faw",name:"First Aid at Work",cat:"workplace",hrs:18,price:225,acc:true,online:false,sum:"Three-day course for higher-risk workplaces."},
+ {id:"cpr",name:"CPR and AED",cat:"workplace",hrs:3,price:35,acc:false,online:false,sum:"Hands-on CPR and defibrillator training for teams."},
+ {id:"paed",name:"Paediatric First Aid",cat:"paediatric",hrs:12,price:150,acc:true,online:true,sum:"Two-day certificated course for childminders and nursery staff."},
+ {id:"baby",name:"Baby and Child First Aid",cat:"community",hrs:3,price:45,acc:false,online:true,sum:"Relaxed practical session for parents, grandparents and carers."},
+ {id:"everyone",name:"First Aid for Everyone",cat:"community",hrs:3,price:45,acc:false,online:true,sum:"Everyday first aid for adults, clubs and community groups."}
+];
+const SESSIONS=[
+ {id:1,c:"baby",d:"2026-10-17T10:00",t:"10am to 1pm",cap:10,taken:6},
+ {id:2,c:"everyone",d:"2026-10-24T10:00",t:"10am to 1pm",cap:10,taken:3},
+ {id:3,c:"paed",d:"2026-11-07T09:00",t:"9am to 4pm, two Saturdays",cap:12,taken:9},
+ {id:4,c:"baby",d:"2026-11-14T10:00",t:"10am to 1pm",cap:10,taken:1}
+];
+const PRIVATE=[{d:"2026-10-21T09:00",c:"faw",org:"Kent Logistics Ltd",n:5,cap:5}];
+const byId=id=>COURSES.find(c=>c.id===id);
+const fmtDate=(s,o)=>new Date(s).toLocaleDateString("en-GB",o||{weekday:"short",day:"numeric",month:"short"});
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+
+let state={session:null,seats:1,filter:"all"};
+
+function route(){
+  const r=(location.hash||"#home").slice(1).split("?")[0];
+  const id=["home","courses","book","workplace","about","admin"].includes(r)?r:"home";
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
+  document.querySelectorAll("nav a, .mnav a").forEach(a=>{if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+
+function sessionRow(s){
+  const c=byId(s.c),left=s.cap-s.taken;
+  return `<div class="srow"><div class="date">${fmtDate(s.d,{day:"numeric",month:"short"})}<small>${fmtDate(s.d,{weekday:"long"})}</small></div>
+  <div><strong>${esc(c.name)}</strong><div class="meta">${esc(s.t)}, Orpington (venue TBC)</div><div class="left ${left<=3?"low":""}">${left} of ${s.cap} places left</div></div>
+  <button class="btn primary small" data-book="${s.id}">Book · £${c.price}</button></div>`;
+}
+$("#home-sessions").innerHTML=SESSIONS.map(sessionRow).join("");
+
+function renderCourses(){
+  const list=COURSES.filter(c=>state.filter==="all"||c.cat===state.filter);
+  $("#course-list").innerHTML=list.map(c=>`<div class="course"><div><strong>${esc(c.name)}</strong>${c.acc?'<span class="tag">Certificated</span>':""}
+    <p>${esc(c.sum)} ${c.hrs} hours.</p></div>
+    <div class="price">${c.online?`£${c.price} per person<small>Open classes</small>`:`From £${c.price} per person<small>Group bookings</small>`}
+    <div style="margin-top:8px">${c.online?`<a class="btn primary small" href="#book" data-course="${c.id}">Book</a>`:`<a class="btn outline small" href="#workplace" data-enq="${c.id}">Get a quote</a>`}</div></div></div>`).join("");
+  document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.cat===state.filter));
+}
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{state.filter=b.dataset.cat;renderCourses()}));
+renderCourses();
+
+function renderPick(){
+  $("#session-pick").innerHTML=SESSIONS.map(s=>{const c=byId(s.c),left=s.cap-s.taken;
+    return `<label><input type="radio" name="sess" value="${s.id}" ${state.session===s.id?"checked":""}><span><strong>${esc(c.name)}</strong><br><span style="color:var(--body);font-size:.93rem">${fmtDate(s.d,{weekday:"long",day:"numeric",month:"long"})}, ${esc(s.t)} · £${c.price} · ${left} left</span></span></label>`}).join("");
+  document.querySelectorAll('input[name="sess"]').forEach(r=>r.addEventListener("change",()=>{state.session=+r.value;const max=maxSeats();if(state.seats>max)state.seats=max;$("#e-session").textContent="";update()}));
+}
+const maxSeats=()=>{const s=SESSIONS.find(x=>x.id===state.session);return s?Math.min(6,s.cap-s.taken):6};
+function renderAttendees(){
+  const box=$("#attendees"),prev=[...box.querySelectorAll("input")].map(i=>i.value);
+  let h="";for(let i=0;i<state.seats;i++)h+=`<label for="att-${i}">Person ${i+1}</label><input id="att-${i}" value="${esc(prev[i]||"")}" autocomplete="off"><p class="err" id="e-att-${i}"></p>`;
+  box.innerHTML=h;box.querySelectorAll("input").forEach((inp,i)=>inp.addEventListener("input",()=>$("#e-att-"+i).textContent=""));
+}
+function update(){
+  $("#seats").textContent=state.seats;$("#s-seats").textContent=state.seats;
+  const s=SESSIONS.find(x=>x.id===state.session);
+  if(s){const c=byId(s.c);$("#s-course").textContent=c.name;$("#s-date").textContent=fmtDate(s.d,{day:"numeric",month:"short"});$("#s-total").textContent="£"+(c.price*state.seats)}
+  else{$("#s-course").textContent="Choose a date";$("#s-date").textContent="–";$("#s-total").textContent="£0"}
+  renderAttendees();
+}
+$("#minus").addEventListener("click",()=>{if(state.seats>1){state.seats--;update()}});
+$("#plus").addEventListener("click",()=>{if(state.seats<maxSeats()){state.seats++;update()}});
+["b-name","b-email"].forEach(id=>$("#"+id).addEventListener("input",()=>$("#e-"+id.split("-")[1]).textContent=""));
+
+$("#pay").addEventListener("click",()=>{
+  let ok=true;
+  if(!state.session){$("#e-session").textContent="Choose a date first.";ok=false}
+  document.querySelectorAll("#attendees input").forEach((inp,i)=>{if(!inp.value.trim()){$("#e-att-"+i).textContent="Add this person's name.";ok=false}});
+  if(!$("#b-name").value.trim()){$("#e-name").textContent="Enter your name.";ok=false}
+  if(!/^\S+@\S+\.\S+$/.test($("#b-email").value.trim())){$("#e-email").textContent="Enter a valid email address.";ok=false}
+  if(!ok){const f=document.querySelector("#p-book .err:not(:empty)");f&&f.previousElementSibling&&f.scrollIntoView({block:"center"});return}
+  const s=SESSIONS.find(x=>x.id===state.session),c=byId(s.c),ref="LR-"+Math.random().toString(36).slice(2,7).toUpperCase();
+  $("#done-text").textContent=`${state.seats} ${state.seats>1?"places":"place"} on ${c.name}, ${fmtDate(s.d,{weekday:"long",day:"numeric",month:"long"})}. Your reference is ${ref}. A confirmation email is on its way, with a reminder two days before.`;
+  $("#book-form").hidden=true;$("#book-done").hidden=false;window.scrollTo(0,0);
+});
+
+$("#q-course").innerHTML=COURSES.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")+'<option value="other">Something bespoke</option>';
+[["q-org","e-org"],["q-name","e-qname"],["q-email","e-qemail"],["q-count","e-count"]].forEach(([i,e])=>$("#"+i).addEventListener("input",()=>$("#"+e).textContent=""));
+$("#send-enq").addEventListener("click",()=>{
+  let ok=true;
+  if(!$("#q-org").value.trim()){$("#e-org").textContent="Enter your organisation.";ok=false}
+  if(!$("#q-name").value.trim()){$("#e-qname").textContent="Enter your name.";ok=false}
+  if(!/^\S+@\S+\.\S+$/.test($("#q-email").value.trim())){$("#e-qemail").textContent="Enter a valid email address.";ok=false}
+  const n=parseInt($("#q-count").value,10);if(!(n>0)){$("#e-count").textContent="Enter how many people need training.";ok=false}
+  if(!ok)return;
+  $("#enq-form").hidden=true;$("#enq-done").hidden=false;window.scrollTo(0,0);
+});
+
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-book]");if(b){state.session=+b.dataset.book;state.seats=1;$("#book-form").hidden=false;$("#book-done").hidden=true;renderPick();update();location.hash="#book";return}
+  const c=e.target.closest("[data-course]");if(c){const s=SESSIONS.find(x=>x.c===c.dataset.course);state.session=s?s.id:null;state.seats=1;$("#book-form").hidden=false;$("#book-done").hidden=true;renderPick();update();return}
+  const q=e.target.closest("[data-enq]");if(q){$("#q-course").value=q.dataset.enq;$("#enq-form").hidden=false;$("#enq-done").hidden=true;return}
+  const f=e.target.closest("[data-filter]");if(f){state.filter=f.dataset.filter;renderCourses()}
+});
+
+const rows=[...SESSIONS.map(s=>({d:s.d,name:byId(s.c).name,type:"Open class",n:s.taken,cap:s.cap})),...PRIVATE.map(p=>({d:p.d,name:byId(p.c).name+" ("+p.org+")",type:"Workplace",n:p.n,cap:p.cap}))].sort((a,b)=>a.d.localeCompare(b.d));
+$("#admin-sessions").innerHTML=rows.map(r=>`<tr><td>${fmtDate(r.d)}</td><td>${esc(r.name)}</td><td>${r.type}</td><td>${r.n} / ${r.cap}</td><td><div class="fill"><i style="width:${Math.round(r.n/r.cap*100)}%"></i></div></td></tr>`).join("");
+
+renderPick();update();route();
+</script>
+</body>
+</html>

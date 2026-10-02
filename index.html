@@ -29,6 +29,8 @@ button,input,select,textarea{font:inherit}
 :focus-visible{outline:2px solid var(--green);outline-offset:3px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
 .page{display:none}.page.on{display:block}
+[hidden]{display:none!important}
+.btn[disabled]{opacity:.6;cursor:progress}
 
 .preview{background:var(--black);color:#BFC7C1;font-size:.82rem;text-align:center;padding:7px 16px;letter-spacing:.01em}
 
@@ -284,20 +286,21 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 </style>
 </head>
 <body>
-<div class="preview" role="note">Preview: name, prices, dates and venue are placeholders. Payments are switched off.</div>
+<div class="preview demo-only" role="note" hidden>Preview: name, prices, dates and venue are placeholders. Payments are switched off.</div>
+<div class="preview soon-only" role="note" hidden>Online booking opens soon. Class dates, venues and prices shown are provisional.</div>
 
 <header class="site">
   <div class="wrap">
     <a class="logo" href="#home"><span class="mark" aria-hidden="true"></span><span class="lk"><span>Life<em>Ready</em></span><small>First aid training</small></span></a>
     <nav aria-label="Main">
-      <a href="#courses">Courses</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin" class="admin">Admin preview</a>
+      <a href="#courses">Courses</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin" class="admin demo-only" hidden>Admin preview</a>
       <button class="theme" id="theme" type="button" aria-label="Switch to dark mode"></button>
       <a href="#book" class="cta">Book a course</a>
     </nav>
   </div>
 </header>
 <div class="mnav" aria-label="Sections">
-  <a href="#home">Home</a><a href="#courses">Courses</a><a href="#book">Book</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin">Admin preview</a>
+  <a href="#home">Home</a><a href="#courses">Courses</a><a href="#book">Book</a><a href="#workplace">Workplace</a><a href="#about">About</a><a href="#admin" class="demo-only" hidden>Admin preview</a>
 </div>
 
 <main>
@@ -306,7 +309,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   <div class="hero">
     <div class="ph has-img"><img src="images/hero.jpg" alt="First aid instructor coaching a learner through CPR on a training manikin" loading="eager" style="object-position:70% center"></div>
     <div class="wrap hero-inner">
-      <a class="next" href="#book" data-book="1"><b>Next class</b>Baby and Child First Aid, Sat 17 Oct</a>
+      <a class="next" id="next-pill" href="#book" hidden><b>Next class</b><span></span></a>
       <h1>Would you know <i>what to do?</i></h1>
       <p class="sub">Calm, hands-on first aid training for workplaces, childcare professionals and families across Kent and South East London.</p>
       <div class="ctas"><a class="btn light" href="#book">Book a course</a><a class="btn ghost" href="#workplace">Request workplace training</a></div>
@@ -315,7 +318,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 
   <div class="trust"><div class="wrap">
     <div><strong>30 years</strong><span>in childcare before teaching</span></div>
-    <div><strong>Max 10</strong><span>people per open class</span></div>
+    <div><strong>Max 12</strong><span>people per open class</span></div>
     <div><strong>On the day</strong><span>certificates for accredited courses</span></div>
     <div><strong>[Awarding body]</strong><span>accredited training centre</span></div>
   </div></div>
@@ -332,14 +335,14 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
           <a class="btn primary small" href="#workplace">Get a quote</a></div>
       </article>
       <article class="stream">
-        <div class="ph has-img"><img src="images/paediatric-card.jpg" alt="Childcare professionals practising on infant manikins" loading="lazy" style="object-position:center"></div>
+        <div class="ph has-img"><img src="images/paediatric-card.jpg" alt="Learners practising infant and child CPR on training manikins with an instructor" loading="lazy" style="object-position:center"></div>
         <div class="body"><h3>Paediatric</h3><p>Certificated training for childminders, nurseries and childcare professionals.</p>
           <ul><li>Paediatric First Aid</li><li>Nursery and setting bookings</li><li>Refresher training</li></ul>
           <a class="btn primary small" href="#courses" data-filter="paediatric">See courses</a></div>
       </article>
       <article class="stream">
-        <div class="ph has-img"><img src="images/community-card.jpg" alt="Learner practising applying an arm sling" loading="lazy" style="object-position:center"></div>
-        <div class="body"><h3>Community</h3><p>No exams, no pressure. Just the skills to act when it matters most.</p>
+        <div class="ph has-img"><img src="images/community-card.jpg" alt="Father practising child CPR on a child manikin while a grandmother watches, guided by an instructor" loading="lazy" style="object-position:center"></div>
+        <div class="body"><h3>Community, Parents and Grandparents</h3><p>No exams, no pressure. Just the skills to act when it matters most.</p>
           <ul><li>Baby and Child First Aid</li><li>First Aid for Everyone</li><li>Sports and community groups</li></ul>
           <a class="btn primary small" href="#courses" data-filter="community">See courses</a></div>
       </article>
@@ -407,7 +410,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   <div id="book-form">
     <p class="eyebrow">Book a class</p>
     <h1 style="font-size:clamp(2.4rem,5vw,3.6rem)">Reserve your place</h1>
-    <p class="lead" style="margin-bottom:40px">Choose a date, add who's coming and pay securely. Places are held for 15 minutes while you pay.</p>
+    <p class="lead" style="margin-bottom:40px">Choose a date, add who's coming and pay securely. Places are held for 30 minutes while you pay.</p>
     <div class="two">
       <div class="panel">
         <h3>1. Choose a date</h3>
@@ -433,13 +436,14 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
           <div class="total"><dt>Total</dt><dd id="s-total">£0</dd></div>
         </dl>
         <button class="btn primary" id="pay" style="width:100%;margin-top:18px">Continue to payment</button>
-        <p class="note">In the live site this opens secure card checkout. Payments are off in this preview.</p>
+        <p class="err" id="e-pay" role="alert"></p>
+        <p class="note">You'll pay securely by card on the next page. Places are held for 30 minutes while you pay.</p>
       </div>
     </div>
   </div>
   <div id="book-done" hidden class="panel done">
     <div class="tick" aria-hidden="true">✓</div>
-    <h2>You're booked</h2>
+    <h2 id="done-title">You're booked</h2>
     <p id="done-text" class="lead" style="margin:16px auto 28px"></p>
     <a class="btn outline" href="#home">Back to home</a>
   </div>
@@ -454,7 +458,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   <div class="wrap page-body">
   <div id="enq-form">
     <div class="two">
-      <div class="panel">
+      <div class="panel" style="position:relative">
         <h3>Request a quote</h3>
         <label for="q-org">Organisation</label><input id="q-org"><p class="err" id="e-org"></p>
         <label for="q-name">Your name</label><input id="q-name" autocomplete="name"><p class="err" id="e-qname"></p>
@@ -465,6 +469,8 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
         <label for="q-loc">Where</label><select id="q-loc"><option>At our workplace</option><option>At your venue</option><option>Not sure yet</option></select>
         <label for="q-dates">Preferred dates</label><input id="q-dates" placeholder="Weekdays in November">
         <label for="q-notes">Anything else</label><textarea id="q-notes"></textarea>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="q-website">Website</label><input id="q-website" tabindex="-1" autocomplete="off"></div>
+        <p class="err" id="e-enq" role="alert"></p>
         <button class="btn primary" id="send-enq" style="margin-top:22px">Request a quote</button>
       </div>
       <div class="panel sticky">
@@ -506,7 +512,7 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
 </div></section>
 
 <!-- ADMIN -->
-<section class="page" id="p-admin">
+<section class="page demo-only" id="p-admin" hidden>
   <div class="admin-bar"><div class="wrap"><h1>Good morning</h1><span style="color:var(--body)">Admin preview with sample data</span></div></div>
   <div class="wrap" style="padding-bottom:64px">
     <div class="metrics">
@@ -541,32 +547,40 @@ footer.site{background:var(--black);color:#9AA69E;padding:80px 0 40px;font-size:
   </div>
   <div class="fbot"><span>LifeReady Training. Business name to be confirmed.</span><span>Site by <a href="https://ric-lee.co.uk">Ric</a></span></div>
 </div></footer>
-<script>
-const COURSES=[
+<script>/* LifeReady public site. Loads live classes from /api/catalogue; if the API isn't reachable
+   (e.g. a static preview) it falls back to demo data and a simulated checkout. */
+let COURSES=[
  {id:"efaw",name:"Emergency First Aid at Work",cat:"workplace",hrs:6,price:95,acc:true,online:false,sum:"One-day course for appointed workplace first aiders."},
  {id:"faw",name:"First Aid at Work",cat:"workplace",hrs:18,price:225,acc:true,online:false,sum:"Three-day course for higher-risk workplaces."},
- {id:"cpr",name:"CPR and AED",cat:"workplace",hrs:3,price:35,acc:false,online:false,sum:"Hands-on CPR and defibrillator training for teams."},
- {id:"paed",name:"Paediatric First Aid",cat:"paediatric",hrs:12,price:150,acc:true,online:true,sum:"Two-day certificated course for childminders and nursery staff."},
- {id:"baby",name:"Baby and Child First Aid",cat:"community",hrs:3,price:45,acc:false,online:true,sum:"Relaxed practical session for parents, grandparents and carers."},
- {id:"everyone",name:"First Aid for Everyone",cat:"community",hrs:3,price:45,acc:false,online:true,sum:"Everyday first aid for adults, clubs and community groups."}
+ {id:"cpr-aed",name:"CPR and AED",cat:"workplace",hrs:3,price:35,acc:false,online:false,sum:"Hands-on CPR and defibrillator training for teams."},
+ {id:"paediatric",name:"Paediatric First Aid",cat:"paediatric",hrs:12,price:150,acc:true,online:true,sum:"Two-day certificated course for childminders and nursery staff."},
+ {id:"baby-child",name:"Baby and Child First Aid",cat:"community",hrs:3,price:45,acc:false,online:true,sum:"Relaxed practical session for parents, grandparents and carers."},
+ {id:"first-aid-everyone",name:"First Aid for Everyone",cat:"community",hrs:3,price:45,acc:false,online:true,sum:"Everyday first aid for adults, clubs and community groups."}
 ];
-const SESSIONS=[
- {id:1,c:"baby",d:"2026-10-17T10:00",t:"10am to 1pm",cap:10,taken:6},
- {id:2,c:"everyone",d:"2026-10-24T10:00",t:"10am to 1pm",cap:10,taken:3},
- {id:3,c:"paed",d:"2026-11-07T09:00",t:"9am to 4pm, two Saturdays",cap:12,taken:9},
- {id:4,c:"baby",d:"2026-11-14T10:00",t:"10am to 1pm",cap:10,taken:1}
+let SESSIONS=[
+ {id:1,c:"baby-child",d:"2026-10-17T10:00",t:"10am to 1pm",venue:"Orpington, venue TBC",cap:12,taken:6,price:45},
+ {id:2,c:"first-aid-everyone",d:"2026-10-24T10:00",t:"10am to 1pm",venue:"Orpington, venue TBC",cap:12,taken:3,price:45},
+ {id:3,c:"paediatric",d:"2026-11-07T09:00",t:"9am to 4pm",venue:"Orpington, venue TBC",cap:12,taken:9,price:150},
+ {id:4,c:"baby-child",d:"2026-11-14T10:00",t:"10am to 1pm",venue:"Orpington, venue TBC",cap:12,taken:1,price:45}
 ];
 const PRIVATE=[{d:"2026-10-21T09:00",c:"faw",org:"Kent Logistics Ltd",n:5,cap:5}];
-const byId=id=>COURSES.find(c=>c.id===id);
-const fmtDate=(s,o)=>new Date(s).toLocaleDateString("en-GB",o||{weekday:"short",day:"numeric",month:"short"});
+let DEMO=true;
+/* On the real domain without the booking system behind it: show the site, but take no bookings or enquiries. */
+const LIVE_HOST=/(^|\.)lifereadyfirstaid\.(co\.uk|com)$/.test(location.hostname);
+
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-
+const byId=id=>COURSES.find(c=>c.id===id)||{name:"Course",price:0};
+const fmtDate=(s,o)=>new Date(s).toLocaleDateString("en-GB",o||{weekday:"short",day:"numeric",month:"short"});
+const money=n=>"£"+(Number.isInteger(n)?n:n.toFixed(2));
+const priceOf=s=>s.price!=null?s.price:byId(s.c).price;
+const left=s=>Math.max(0,s.cap-s.taken);
 let state={session:null,seats:1,filter:"all"};
 
 function route(){
   const r=(location.hash||"#home").slice(1).split("?")[0];
-  const id=["home","courses","book","workplace","about","admin"].includes(r)?r:"home";
+  const pages=[...document.querySelectorAll(".page")].map(p=>p.id.slice(2));
+  const id=pages.includes(r)?r:"home";
   document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on",p.id==="p-"+id));
   document.querySelectorAll("nav a, .mnav a").forEach(a=>{if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
   window.scrollTo(0,0);
@@ -574,39 +588,43 @@ function route(){
 window.addEventListener("hashchange",route);
 
 function sessionRow(s){
-  const c=byId(s.c),left=s.cap-s.taken;
+  const c=byId(s.c),l=left(s);
+  const btn=l>0?`<button class="btn primary small" data-book="${s.id}">Book · ${money(priceOf(s))}</button>`:`<span class="btn outline small" aria-disabled="true">Fully booked</span>`;
   return `<div class="srow"><div class="date">${fmtDate(s.d,{day:"numeric",month:"short"})}<small>${fmtDate(s.d,{weekday:"long"})}</small></div>
-  <div><strong>${esc(c.name)}</strong><div class="meta">${esc(s.t)}, Orpington (venue TBC)</div><div class="left ${left<=3?"low":""}">${left} of ${s.cap} places left</div></div>
-  <button class="btn primary small" data-book="${s.id}">Book · £${c.price}</button></div>`;
+  <div><strong>${esc(c.name)}</strong><div class="meta">${esc(s.t)}, ${esc(s.venue||"")}</div><div class="left ${l<=3?"low":""}">${l>0?`${l} of ${s.cap} places left`:"Fully booked"}</div></div>${btn}</div>`;
 }
-$("#home-sessions").innerHTML=SESSIONS.map(sessionRow).join("");
-
+function renderSessions(){
+  const box=$("#home-sessions");
+  box.innerHTML=SESSIONS.length?SESSIONS.slice(0,6).map(sessionRow).join(""):`<p class="lead">New dates are coming soon. <a href="#workplace">Get in touch</a> to register interest.</p>`;
+  const next=SESSIONS.find(s=>left(s)>0),pill=$("#next-pill");
+  if(pill){if(next){pill.hidden=false;pill.dataset.book=next.id;pill.querySelector("span").textContent=`${byId(next.c).name}, ${fmtDate(next.d,{weekday:"short",day:"numeric",month:"short"})}`}else pill.hidden=true}
+}
 function renderCourses(){
   const list=COURSES.filter(c=>state.filter==="all"||c.cat===state.filter);
   $("#course-list").innerHTML=list.map(c=>`<div class="course"><div><strong>${esc(c.name)}</strong>${c.acc?'<span class="tag">Certificated</span>':""}
-    <p>${esc(c.sum)} ${c.hrs} hours.</p></div>
-    <div class="price">${c.online?`£${c.price} per person<small>Open classes</small>`:`From £${c.price} per person<small>Group bookings</small>`}
+    <p>${esc(c.sum||"")} ${c.hrs} hours.</p></div>
+    <div class="price">${c.online?`${money(c.price)} per person<small>Open classes</small>`:`From ${money(c.price)} per person<small>Group bookings</small>`}
     <div style="margin-top:8px">${c.online?`<a class="btn primary small" href="#book" data-course="${c.id}">Book</a>`:`<a class="btn outline small" href="#workplace" data-enq="${c.id}">Get a quote</a>`}</div></div></div>`).join("");
   document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.cat===state.filter));
 }
 document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{state.filter=b.dataset.cat;renderCourses()}));
-renderCourses();
 
 function renderPick(){
-  $("#session-pick").innerHTML=SESSIONS.map(s=>{const c=byId(s.c),left=s.cap-s.taken;
-    return `<label><input type="radio" name="sess" value="${s.id}" ${state.session===s.id?"checked":""}><span><strong>${esc(c.name)}</strong><br><span style="color:var(--body);font-size:.93rem">${fmtDate(s.d,{weekday:"long",day:"numeric",month:"long"})}, ${esc(s.t)} · £${c.price} · ${left} left</span></span></label>`}).join("");
+  const open=SESSIONS.filter(s=>left(s)>0);
+  $("#session-pick").innerHTML=open.length?open.map(s=>{const c=byId(s.c);
+    return `<label><input type="radio" name="sess" value="${s.id}" ${state.session===s.id?"checked":""}><span><strong>${esc(c.name)}</strong><br><span style="color:var(--body);font-size:.93rem">${fmtDate(s.d,{weekday:"long",day:"numeric",month:"long"})}, ${esc(s.t)} · ${money(priceOf(s))} · ${left(s)} left</span></span></label>`}).join(""):`<p class="note">No open classes right now. New dates are added regularly.</p>`;
   document.querySelectorAll('input[name="sess"]').forEach(r=>r.addEventListener("change",()=>{state.session=+r.value;const max=maxSeats();if(state.seats>max)state.seats=max;$("#e-session").textContent="";update()}));
 }
-const maxSeats=()=>{const s=SESSIONS.find(x=>x.id===state.session);return s?Math.min(6,s.cap-s.taken):6};
+const maxSeats=()=>{const s=SESSIONS.find(x=>x.id===state.session);return s?Math.max(1,Math.min(6,left(s))):6};
 function renderAttendees(){
   const box=$("#attendees"),prev=[...box.querySelectorAll("input")].map(i=>i.value);
-  let h="";for(let i=0;i<state.seats;i++)h+=`<label for="att-${i}">Person ${i+1}</label><input id="att-${i}" value="${esc(prev[i]||"")}" autocomplete="off"><p class="err" id="e-att-${i}"></p>`;
+  let h="";for(let i=0;i<state.seats;i++)h+=`<label for="att-${i}">Person ${i+1}</label><input id="att-${i}" value="${esc(prev[i]||"")}" autocomplete="off" maxlength="120"><p class="err" id="e-att-${i}"></p>`;
   box.innerHTML=h;box.querySelectorAll("input").forEach((inp,i)=>inp.addEventListener("input",()=>$("#e-att-"+i).textContent=""));
 }
 function update(){
   $("#seats").textContent=state.seats;$("#s-seats").textContent=state.seats;
   const s=SESSIONS.find(x=>x.id===state.session);
-  if(s){const c=byId(s.c);$("#s-course").textContent=c.name;$("#s-date").textContent=fmtDate(s.d,{day:"numeric",month:"short"});$("#s-total").textContent="£"+(c.price*state.seats)}
+  if(s){$("#s-course").textContent=byId(s.c).name;$("#s-date").textContent=fmtDate(s.d,{day:"numeric",month:"short"});$("#s-total").textContent=money(priceOf(s)*state.seats)}
   else{$("#s-course").textContent="Choose a date";$("#s-date").textContent="–";$("#s-total").textContent="£0"}
   renderAttendees();
 }
@@ -614,41 +632,117 @@ $("#minus").addEventListener("click",()=>{if(state.seats>1){state.seats--;update
 $("#plus").addEventListener("click",()=>{if(state.seats<maxSeats()){state.seats++;update()}});
 ["b-name","b-email"].forEach(id=>$("#"+id).addEventListener("input",()=>$("#e-"+id.split("-")[1]).textContent=""));
 
-$("#pay").addEventListener("click",()=>{
+function showDone(text,title){
+  $("#done-title").textContent=title||"You're booked";
+  $("#done-text").textContent=text;
+  $("#book-form").hidden=true;$("#book-done").hidden=false;
+  if(location.hash!=="#book")location.hash="#book";else route();
+}
+
+$("#pay").addEventListener("click",async()=>{
+  const btn=$("#pay"),err=$("#e-pay");err.textContent="";
   let ok=true;
   if(!state.session){$("#e-session").textContent="Choose a date first.";ok=false}
   document.querySelectorAll("#attendees input").forEach((inp,i)=>{if(!inp.value.trim()){$("#e-att-"+i).textContent="Add this person's name.";ok=false}});
   if(!$("#b-name").value.trim()){$("#e-name").textContent="Enter your name.";ok=false}
   if(!/^\S+@\S+\.\S+$/.test($("#b-email").value.trim())){$("#e-email").textContent="Enter a valid email address.";ok=false}
-  if(!ok){const f=document.querySelector("#p-book .err:not(:empty)");f&&f.previousElementSibling&&f.scrollIntoView({block:"center"});return}
-  const s=SESSIONS.find(x=>x.id===state.session),c=byId(s.c),ref="LR-"+Math.random().toString(36).slice(2,7).toUpperCase();
-  $("#done-text").textContent=`${state.seats} ${state.seats>1?"places":"place"} on ${c.name}, ${fmtDate(s.d,{weekday:"long",day:"numeric",month:"long"})}. Your reference is ${ref}. A confirmation email is on its way, with a reminder two days before.`;
-  $("#book-form").hidden=true;$("#book-done").hidden=false;window.scrollTo(0,0);
+  if(!ok){const f=document.querySelector("#p-book .err:not(:empty)");f&&f.scrollIntoView({block:"center"});return}
+  const s=SESSIONS.find(x=>x.id===state.session),c=byId(s.c);
+
+  if(DEMO&&LIVE_HOST){err.textContent="Online booking opens very soon. Please check back shortly.";return}
+  if(DEMO){
+    const ref="LR-"+Math.random().toString(36).slice(2,8).toUpperCase();
+    return showDone(`${state.seats} ${state.seats>1?"places":"place"} on ${c.name}, ${fmtDate(s.d,{weekday:"long",day:"numeric",month:"long"})}. Your reference is ${ref}. A confirmation email is on its way, with a reminder two days before.`);
+  }
+  btn.disabled=true;btn.textContent="Taking you to payment…";
+  try{
+    const res=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+      sessionId:state.session,seats:state.seats,attendees:[...document.querySelectorAll("#attendees input")].map(i=>i.value.trim()),
+      name:$("#b-name").value.trim(),email:$("#b-email").value.trim(),phone:$("#b-phone").value.trim()})});
+    const data=await res.json().catch(()=>({}));
+    if(res.ok&&data.url){location.href=data.url;return}
+    err.textContent=data.error||"Something went wrong. Please try again.";
+    if(res.status===409)loadCatalogue();
+  }catch(e){err.textContent="We couldn't reach the booking system. Check your connection and try again."}
+  btn.disabled=false;btn.textContent="Continue to payment";
 });
 
-$("#q-course").innerHTML=COURSES.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")+'<option value="other">Something bespoke</option>';
+/* Returning from Stripe */
+async function handleReturn(){
+  const q=new URLSearchParams(location.search),booked=q.get("booked"),cancelled=q.get("cancelled");
+  if(!booked&&!cancelled)return;
+  history.replaceState(null,"",location.pathname+location.hash);
+  if(cancelled){
+    fetch(`/api/bookings/${encodeURIComponent(cancelled)}/release`,{method:"POST"}).then(loadCatalogue).catch(()=>{});
+    $("#e-pay").textContent="Payment cancelled, so nothing has been charged. Your places have been released.";
+    return;
+  }
+  let b=null;
+  for(let i=0;i<4&&(!b||b.status==="held");i++){
+    try{const r=await fetch(`/api/bookings/${encodeURIComponent(booked)}`);if(r.ok)b=await r.json()}catch(e){}
+    if(!b||b.status==="held")await new Promise(r=>setTimeout(r,1500));
+  }
+  if(b&&b.status==="refunded")return showDone(`Sorry, the last places on this class went while you were paying, so we've refunded you in full. Reference ${b.reference}.`,"This class just filled up");
+  const when=b?`${b.course}, ${fmtDate(b.start,{weekday:"long",day:"numeric",month:"long"})}. `:"";
+  showDone(`${when}Your reference is ${booked}. A confirmation email is on its way, with a reminder two days before.`);
+}
+
 [["q-org","e-org"],["q-name","e-qname"],["q-email","e-qemail"],["q-count","e-count"]].forEach(([i,e])=>$("#"+i).addEventListener("input",()=>$("#"+e).textContent=""));
-$("#send-enq").addEventListener("click",()=>{
+$("#send-enq").addEventListener("click",async()=>{
   let ok=true;
   if(!$("#q-org").value.trim()){$("#e-org").textContent="Enter your organisation.";ok=false}
   if(!$("#q-name").value.trim()){$("#e-qname").textContent="Enter your name.";ok=false}
   if(!/^\S+@\S+\.\S+$/.test($("#q-email").value.trim())){$("#e-qemail").textContent="Enter a valid email address.";ok=false}
   const n=parseInt($("#q-count").value,10);if(!(n>0)){$("#e-count").textContent="Enter how many people need training.";ok=false}
   if(!ok)return;
-  $("#enq-form").hidden=true;$("#enq-done").hidden=false;window.scrollTo(0,0);
+  const done=()=>{$("#enq-form").hidden=true;$("#enq-done").hidden=false;window.scrollTo(0,0)};
+  if(DEMO&&LIVE_HOST){$("#e-enq").textContent="Our enquiry form opens very soon. Please check back shortly.";return}
+  if(DEMO)return done();
+  const btn=$("#send-enq"),err=$("#e-enq");err.textContent="";btn.disabled=true;btn.textContent="Sending…";
+  try{
+    const res=await fetch("/api/enquiries",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+      organisation:$("#q-org").value,name:$("#q-name").value,email:$("#q-email").value,phone:$("#q-phone").value,
+      course:$("#q-course").value,headcount:n,location:$("#q-loc").value,dates:$("#q-dates").value,notes:$("#q-notes").value,website:$("#q-website").value})});
+    const data=await res.json().catch(()=>({}));
+    if(res.ok)return done();
+    err.textContent=data.error||"Something went wrong. Please try again.";
+  }catch(e){err.textContent="We couldn't send your enquiry. Check your connection and try again."}
+  btn.disabled=false;btn.textContent="Request a quote";
 });
 
 document.addEventListener("click",e=>{
-  const b=e.target.closest("[data-book]");if(b){state.session=+b.dataset.book;state.seats=1;$("#book-form").hidden=false;$("#book-done").hidden=true;renderPick();update();location.hash="#book";return}
-  const c=e.target.closest("[data-course]");if(c){const s=SESSIONS.find(x=>x.c===c.dataset.course);state.session=s?s.id:null;state.seats=1;$("#book-form").hidden=false;$("#book-done").hidden=true;renderPick();update();return}
+  const b=e.target.closest("[data-book]");if(b){e.preventDefault();state.session=+b.dataset.book;state.seats=1;$("#book-form").hidden=false;$("#book-done").hidden=true;renderPick();update();if(location.hash!=="#book")location.hash="#book";else route();return}
+  const c=e.target.closest("[data-course]");if(c){const s=SESSIONS.find(x=>x.c===c.dataset.course&&left(x)>0);state.session=s?s.id:null;state.seats=1;$("#book-form").hidden=false;$("#book-done").hidden=true;renderPick();update();return}
   const q=e.target.closest("[data-enq]");if(q){$("#q-course").value=q.dataset.enq;$("#enq-form").hidden=false;$("#enq-done").hidden=true;return}
   const f=e.target.closest("[data-filter]");if(f){state.filter=f.dataset.filter;renderCourses()}
 });
 
-const rows=[...SESSIONS.map(s=>({d:s.d,name:byId(s.c).name,type:"Open class",n:s.taken,cap:s.cap})),...PRIVATE.map(p=>({d:p.d,name:byId(p.c).name+" ("+p.org+")",type:"Workplace",n:p.n,cap:p.cap}))].sort((a,b)=>a.d.localeCompare(b.d));
-$("#admin-sessions").innerHTML=rows.map(r=>`<tr><td>${fmtDate(r.d)}</td><td>${esc(r.name)}</td><td>${r.type}</td><td>${r.n} / ${r.cap}</td><td><div class="fill"><i style="width:${Math.round(r.n/r.cap*100)}%"></i></div></td></tr>`).join("");
+function renderAdminDemo(){
+  const t=$("#admin-sessions");if(!t)return;
+  const rows=[...SESSIONS.map(s=>({d:s.d,name:byId(s.c).name,type:"Open class",n:s.taken,cap:s.cap})),...PRIVATE.map(p=>({d:p.d,name:byId(p.c).name+" ("+p.org+")",type:"Workplace",n:p.n,cap:p.cap}))].sort((a,b)=>a.d.localeCompare(b.d));
+  t.innerHTML=rows.map(r=>`<tr><td>${fmtDate(r.d)}</td><td>${esc(r.name)}</td><td>${r.type}</td><td>${r.n} / ${r.cap}</td><td><div class="fill"><i style="width:${Math.round(r.n/r.cap*100)}%"></i></div></td></tr>`).join("");
+}
+function renderAll(){renderSessions();renderCourses();renderPick();update();$("#q-course").innerHTML=COURSES.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")+'<option value="other">Something bespoke</option>'}
 
-renderPick();update();route();
+async function loadCatalogue(){
+  try{
+    const r=await fetch("/api/catalogue",{headers:{Accept:"application/json"}});
+    if(!r.ok)throw 0;
+    const data=await r.json();
+    if(!Array.isArray(data.courses))throw 0;
+    COURSES=data.courses;SESSIONS=data.sessions;DEMO=false;
+    if(state.session&&!SESSIONS.some(s=>s.id===state.session&&left(s)>0))state.session=null;
+    document.querySelectorAll(".demo-only,.soon-only").forEach(el=>el.remove());
+  }catch(e){
+    DEMO=true;
+    if(LIVE_HOST){document.querySelectorAll(".demo-only").forEach(el=>el.remove());document.querySelectorAll(".soon-only").forEach(el=>el.hidden=false)}
+    else{document.querySelectorAll(".soon-only").forEach(el=>el.remove());document.querySelectorAll(".demo-only").forEach(el=>el.hidden=false)}
+  }
+  renderAll();
+}
+
+renderAdminDemo();route();
+loadCatalogue().then(handleReturn);
 
 (function(){
   const root=document.documentElement,btn=document.getElementById("theme"),mq=matchMedia("(prefers-color-scheme: dark)");
